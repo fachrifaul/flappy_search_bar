@@ -214,6 +214,9 @@ class SearchBar<T> extends StatefulWidget {
 
   /// Set a padding on the list
   final EdgeInsetsGeometry listPadding;
+  
+    /// Detect focus on widget
+  final FocusNode focus;
 
   SearchBar({
     Key key,
@@ -246,6 +249,7 @@ class SearchBar<T> extends StatefulWidget {
     this.listPadding = const EdgeInsets.all(0),
     this.searchBarPadding = const EdgeInsets.all(0),
     this.headerPadding = const EdgeInsets.all(0),
+    this.focus
   }) : super(key: key);
 
   @override
@@ -396,6 +400,7 @@ class _SearchBarState<T> extends State<SearchBar<T>>
                       padding: widget.searchBarStyle.padding,
                       child: Theme(
                         child: TextField(
+                          focusNode: widget.focus,
                           controller: _searchQueryController,
                           onChanged: _onTextChanged,
                           style: widget.textStyle,
